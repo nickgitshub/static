@@ -1,11 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage(‘UploadtoAWS’) {
+    stage('Upload to AWS') {
         steps {
-          withAWS(region:’us-west-1’,credentials:’aws-static’) {
+          withAWS(region:'us-west-1',credentials:'aws-static') {
             sh 'echo "Uploading content with AWS creds"'
-            s3Upload(pathStyleAccessEnabled:true, payloadSigningEnabled: true, file:’index.html’, bucket:’udacity-p3-bucket’)
+            s3Upload(pathStyleAccessEnabled:true, payloadSigningEnabled: true, file: 'index.html', bucket:'udacity-p3-bucket')
           }
         }
       }
